@@ -1,3 +1,4 @@
+// import { useState } from "react"
 import AddForm from "../components/AddForm"
 import HabitListItem from "../components/HabitListItem"
 import NavBar from "../components/NavBar"
@@ -6,6 +7,8 @@ import Stat from "../components/Stat"
 
 
 const Home = () => {
+    // const [habits ,SetHabits] = useState([]);
+    // const [isFormOpen, setIsFormOpen] = useState(false);
   return (
     <div className="min-h-screen text-black overflow-hidden">
          <NavBar />
