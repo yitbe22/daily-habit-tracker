@@ -1,6 +1,6 @@
 import HabitItem from "./HabitItem";
 
-const HabitListItem = ({habits}) => {
+const HabitListItem = ({habits, onToggle}) => {
   return (
     <section className="w-full mx-auto">
       <h1 className="text-xl sm:text-2xl font-medium pb-3">Today's Habits</h1>
@@ -9,6 +9,7 @@ const HabitListItem = ({habits}) => {
            <HabitItem 
                key={habit.id}
                habit={habit}
+               onToggle={onToggle}
                 />
         ))}
       </div>

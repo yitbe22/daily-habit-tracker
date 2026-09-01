@@ -3,7 +3,7 @@ import { Flame, Trophy, CircleCheck, ChartLine } from "lucide-react";
 
 const Stat = ({ onAddHabit }) => {
   return (
-    <div className="mx-auto w-full max-w-230">
+    <div className="mx-auto w-full max-w-230 bg-white dark:bg-slate-950">
       <div className="flex flex-col space-y-3 sm:flex-row sm:justify-between sm:items-center  px-6 sm:px-7 md:px-8 py-5">
         <div className="space-y">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium">
@@ -14,7 +14,7 @@ const Stat = ({ onAddHabit }) => {
         <div>
           <button
             onClick={onAddHabit}
-            className="bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300"
+            className="bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-200"
           >
             + Add Habit
           </button>

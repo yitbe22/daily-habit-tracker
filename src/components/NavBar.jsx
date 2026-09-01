@@ -1,8 +1,8 @@
-import { CircleCheck, Sun } from "lucide-react";
+import { CircleCheck, Sun, Moon } from "lucide-react";
 
-const NavBar = () => {
+const NavBar = ({darkMode,toggleDarkMode}) => {
   return (
-    <nav className="fixed bg-slate-950 top-0 w-full z-50">
+    <nav className={darkMode ? "fixed top-0 z-50 w-full bg-slate-950 shadow-[0_2px_5px_rgba(255,255,255,0.5)]" : "fixed top-0 z-50 w-full bg-slate-950"}>
        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
            <div className="flex justify-between items-center h-14 sm:h-16 lg:h-18">
               <div className="flex items-center space-x-1 group cursor-pointer">
@@ -12,11 +12,14 @@ const NavBar = () => {
                     <span className="text-orange-400">Up</span>
                   </span>
               </div>
-              <div>
-                <Sun className="text-white h-5 w-5 sm:h-6 sm:w-6"/>
-              </div>
+              <button onClick={toggleDarkMode} className="transition-all duration-300 cursor-pointer">
+                  {darkMode?  
+                  <Sun className="h-5 w-5 text-yellow-400 sm:h-6 sm:w-6"/>: 
+                  <Moon className="h-5 w-5 text-slate-200 sm:h-6 sm:w-6"/>}
+              </button>
            </div>
        </div>
+      
     </nav>
   )
 }

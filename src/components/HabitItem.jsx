@@ -1,19 +1,22 @@
 import { Flame } from "lucide-react";
 import habitIcons from "../data/habitIcons";
+import habitColors from "../data/habitColors";
 
-const HabitItem = ({habit}) => {
+const HabitItem = ({habit, onToggle}) => {
     const today = new Date().toISOString().split("T")[0];
     const completed = habit.completions[today] || false;
 
-    
+    const color = habitColors.find(color => color.name === habit.color)
 
     const ConvertIcon = habitIcons.find((icon) => habit.icon === icon.name);
     const Icon = ConvertIcon?.icon;
    
   return (
-    <div className="w-full flex items-center justify-between border-[0.5px] border-gray-200 rounded-xl bg-white shadow-2xs px-5 sm:px-6 md:px-7 py-2 sm:py-3 md:py-4">
+    <div className="w-full flex items-center justify-between border-[0.5px] border-gray-200 rounded-xl bg-white dark:bg-slate-900 dark:border-none shadow-2xs px-5 sm:px-6 md:px-7 py-2 sm:py-3 md:py-4">
       <div className="flex gap-2 items-center">
-        <div className="border border-gray-200 rounded-xl py-1.5 px-1.5 sm:py-2 sm:px-2">
+        <div 
+            style={{background:color.value}}
+            className={"border border-gray-200 dark:border-none rounded-xl py-1.5 px-1.5 sm:py-2 sm:px-2"}>
             {Icon && <Icon size={22} strokeWidth={1.5}/>}
         </div>
         <div>
@@ -27,11 +30,12 @@ const HabitItem = ({habit}) => {
       </div>
 
       <div className="flex gap-2 items-center">
-        <div className="flex items-center gap-1 text-sm bg-gray-100 py-1 px-2 rounded-full">
+        <div className="flex items-center gap-1 text-sm bg-gray-300 dark:text-slate-900 py-1 px-2 rounded-full">
           <Flame size={15} className="text-orange-500" />
             20
         </div>
         <button
+          onClick={() => onToggle(habit.id)}
           aria-label={completed ? "Mark incomplete" : "Mark complete"}
           className="w-8 h-8 relative rounded-full border-2 border-emerald-500"
         >

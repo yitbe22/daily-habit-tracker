@@ -34,7 +34,7 @@ const AddForm = ({ onClose, isOpen, onAddHabit }) => {
              w-[calc(100%-2rem)] max-w-sm
              max-h-[90vh] overflow-y-auto
              border border-gray-200 rounded-xl
-             bg-white shadow-xl p-4 sm:p-5"
+             bg-white dark:bg-slate-950 shadow-xl p-4 sm:p-5"
       >
         <div className="flex justify-between items-center">
           <h1 className="text-lg font-medium">Add Habit</h1>
@@ -54,7 +54,7 @@ const AddForm = ({ onClose, isOpen, onAddHabit }) => {
                 setForm({ ...form, name: e.target.value });
               }}
               placeholder="e.g. Read 10 pages"
-              className="rounded-md bg-gray-100 py-1 px-3 border border-gray-300 focus:border-orange-400 focus:outline-none"
+              className="rounded-md bg-gray-100 py-1 px-3 border border-gray-300 dark:bg-slate-800 dark:border-slate-800 focus:border-orange-400 focus:outline-none"
               required
             />
           </label>
@@ -77,8 +77,8 @@ const AddForm = ({ onClose, isOpen, onAddHabit }) => {
                     className={`flex justify-center items-center p-1.5 rounded-md border transition-colors duration-200
                               ${
                                 form.icon === item.name
-                                  ? "border-orange-400 bg-orange-100"
-                                  : "border-gray-300 bg-gray-100"
+                                  ? "border-orange-400 text-orange-400"
+                                  : "border-gray-300 bg-gray-100 dark:bg-slate-900 dark:border-slate-900"
                               }
                               
                               `}
@@ -106,7 +106,7 @@ const AddForm = ({ onClose, isOpen, onAddHabit }) => {
                     className={`w-8 h-8 border-2 rounded-full cursor-pointer transition-all duration-200
                                  ${
                                    form.color === color.name
-                                     ? "border-gray-900 scale-110"
+                                     ? " border-gray-700  dark:border-gray-200 scale-110"
                                      : "border-transparent"
                                  }
                               `}
