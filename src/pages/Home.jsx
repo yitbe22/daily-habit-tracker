@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddForm from "../components/AddForm";
 import HabitListItem from "../components/HabitListItem";
 import NavBar from "../components/NavBar";
@@ -6,8 +6,17 @@ import QuickAdd from "../components/QuickAdd";
 import Stat from "../components/Stat";
 
 const Home = ({darkMode,toggleDarkMode}) => {
-  const [habits ,SetHabits] = useState([]);
+  const [habits ,SetHabits] = useState(()=>{
+       const savedHabit = localStorage.getItem('habits');
+
+       return savedHabit? JSON.parse(savedHabit) : [];
+  });
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+
+  useEffect(() => {
+      localStorage.setItem('habits', JSON.stringify(habits));
+  },[habits])
 
   const addHabit = (habit) => {
       SetHabits((prevHabit) => [
