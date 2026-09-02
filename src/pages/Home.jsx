@@ -4,6 +4,7 @@ import HabitListItem from "../components/HabitListItem";
 import NavBar from "../components/NavBar";
 import QuickAdd from "../components/QuickAdd";
 import Stat from "../components/Stat";
+import Footer from "../components/Footer";
 
 const Home = ({darkMode,toggleDarkMode}) => {
   const [habits ,SetHabits] = useState(()=>{
@@ -64,6 +65,8 @@ const Home = ({darkMode,toggleDarkMode}) => {
             isOpen={isFormOpen} 
             onClose={() => setIsFormOpen(false)} 
             onAddHabit={addHabit}/>
+
+      <Footer />
     </div>
   );
 };
