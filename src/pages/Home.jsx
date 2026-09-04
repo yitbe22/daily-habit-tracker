@@ -6,7 +6,7 @@ import QuickAdd from "../components/QuickAdd";
 import Stat from "../components/Stat";
 import Footer from "../components/Footer";
 
-const Home = ({darkMode,toggleDarkMode}) => {
+const Home = ({darkMode,toggleDarkMode,setPage}) => {
   const [habits ,SetHabits] = useState(()=>{
        const savedHabit = localStorage.getItem('habits');
 
@@ -57,7 +57,7 @@ const Home = ({darkMode,toggleDarkMode}) => {
       <main className="pt-14 sm:pt-16 md:pt-17 lg:pt-18">
         <Stat onAddHabit={() => setIsFormOpen(true)} />
         <div className="mx-auto w-full max-w-230 px-4 sm:px-6 md:px-8 py-5 flex flex-col md:flex-row md:justify-between md:items-start gap-5">
-          <HabitListItem habits={habits} onToggle={toggelHabit}/>
+          <HabitListItem habits={habits} onToggle={toggelHabit} setPage={setPage} />
           <QuickAdd onAddHabit={addHabit}/>
         </div>
       </main>
