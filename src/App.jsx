@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Home from './pages/Home'
 import { HabitDetail } from './pages/HabitDetail';
 import { PageContext } from './context/PageContext';
@@ -15,8 +15,14 @@ const Pages = ({darkMode, toggleDarkMode}) => {
 
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(()=> {
+      return localStorage.getItem('theme') === 'true';
+  });
   
+  useEffect(() => {
+  localStorage.setItem('theme', darkMode);
+   }, [darkMode]);
+
   const toggleDarkMode = () => {
       setDarkMode((prev) => !prev);
   };

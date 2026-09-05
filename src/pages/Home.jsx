@@ -26,6 +26,7 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
       ]);
   }
 
+
   console.log(habits)
 
   const toggelHabit = (id) => {
