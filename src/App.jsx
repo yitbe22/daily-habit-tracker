@@ -6,11 +6,11 @@ import { PageProvider } from './context/PageProvider';
 
 
 const Pages = ({darkMode, toggleDarkMode}) => {
-    const {page} = useContext(PageContext);
+    const {page, selectedHabit} = useContext(PageContext);
 
     return page === "home" ?
            <Home darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>:
-           <HabitDetail darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+           <HabitDetail darkMode={darkMode} toggleDarkMode={toggleDarkMode}  habit={selectedHabit}/>
 }     
 
 

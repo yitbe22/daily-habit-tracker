@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useContext} from "react";
 import habitIcons from "../data/habitIcons";
 import habitColors from "../data/habitColors";
 import { X } from "lucide-react";
+import { PageContext } from "../context/PageContext";
 
-const AddForm = ({ onClose, isOpen, onAddHabit }) => {
-  const [form, setForm] = useState({ name: "", icon: "", color: "" });
+const AddForm = ({ onClose, isOpen, onAddHabit, onEdit}) => {
+  
+  const {form,setForm,editing} = useContext(PageContext);
+  
 
   const handleSubmit = (e) => {
      e.preventDefault();
 
-     const newHabit = {
+     if(editing){
+          onEdit();
+     } else {
+        const newHabit = {
         id: crypto.randomUUID(),
         name: form.name,
         icon:form.icon,
         color:form.color,
         startDate: new Date().toISOString().split("T")[0],
         completions: {},
+        }
+
+         onAddHabit(newHabit);
      }
 
-      setForm({ name: "", icon: "", color: ""});
 
-      onAddHabit(newHabit);
-      
+      setForm({ name: "", icon: "", color: ""});
       onClose();
   }
 
@@ -37,7 +44,9 @@ const AddForm = ({ onClose, isOpen, onAddHabit }) => {
              bg-white dark:bg-slate-950 shadow-xl p-4 sm:p-5"
       >
         <div className="flex justify-between items-center">
-          <h1 className="text-lg font-medium">Add Habit</h1>
+          <h1 className="text-lg font-medium">
+            {editing ? "Edit Habit" : "Add Habit"}
+          </h1>
           <button className="cursor-pointer" onClick={onClose}>
             <X strokeWidth={1.5} />
           </button>
@@ -118,7 +127,7 @@ const AddForm = ({ onClose, isOpen, onAddHabit }) => {
           </div>
           <div className="py-3">
             <button className="w-full bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300">
-              Create Habit
+               {editing ? "Save Changes" : "Create Habit"}
             </button>
           </div>
         </form>
