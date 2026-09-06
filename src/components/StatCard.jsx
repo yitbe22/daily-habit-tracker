@@ -7,7 +7,7 @@ const StatCard = ({icon: Icon, title, value, unit, iconColor, borderColor}) => {
        <div className="flex flex-col">
           <p className="text-2xs mb-1">{title}</p> 
           <span className="text-xl font-semibold">{value} 
-              <small className="text-xs font-light">{unit}</small>
+              <small className="text-xs font-light pl-0.5">{unit}</small>
           </span> 
           
        </div>

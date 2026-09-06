@@ -2,8 +2,8 @@ import { MoveLeft } from "lucide-react"
 import { HabitStatCard } from "./HabitStatCard"
 import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
-import habitIcons from "../data/habitIcons"
-import habitColors from "../data/habitColors"
+import habitIcons from "../utils/habitIcons"
+import habitColors from "../utils/habitColors"
 
 
 export const HabitStat = ({habit, onEdit}) => {
@@ -47,7 +47,7 @@ export const HabitStat = ({habit, onEdit}) => {
                         });
                         onEdit();
                    }}
-                   className="border border-orange-500 px-2 py-1 rounded-2xl">Edit Habit</button>
+                   className="border border-orange-500 px-2 py-1 rounded-2xl cursor-pointer hover:bg-amber-500">Edit Habit</button>
             </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-5">

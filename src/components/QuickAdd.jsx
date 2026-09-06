@@ -1,5 +1,5 @@
 import { useState } from "react";
-import habitColors from "../data/habitColors";
+import habitColors from "../utils/habitColors";
 
 
 const QuickAdd = ({onAddHabit}) => {

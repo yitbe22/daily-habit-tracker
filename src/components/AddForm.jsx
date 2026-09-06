@@ -1,6 +1,6 @@
 import { useContext} from "react";
-import habitIcons from "../data/habitIcons";
-import habitColors from "../data/habitColors";
+import habitIcons from "../utils/habitIcons";
+import habitColors from "../utils/habitColors";
 import { X } from "lucide-react";
 import { PageContext } from "../context/PageContext";
 

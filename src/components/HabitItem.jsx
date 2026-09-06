@@ -1,11 +1,11 @@
 import { Flame } from "lucide-react";
-import habitIcons from "../data/habitIcons";
-import habitColors from "../data/habitColors";
+import habitIcons from "../utils/habitIcons";
+import habitColors from "../utils/habitColors";
 import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 
-const HabitItem = ({habit, onToggle}) => {
-    const {setPage, setSelectedHabit} = useContext(PageContext);
+const HabitItem = ({habit}) => {
+    const {setPage, setSelectedHabit,toggelHabit} = useContext(PageContext);
     const today = new Date().toISOString().split("T")[0];
     const completed = habit.completions[today] || false;
 
@@ -45,7 +45,7 @@ const HabitItem = ({habit, onToggle}) => {
         <button
           onClick={(event) => {
             event.stopPropagation();
-            onToggle(habit.id)}}
+            toggelHabit(habit.id)}}
           aria-label={completed ? "Mark incomplete" : "Mark complete"}
           className="w-8 h-8 relative rounded-full border-2 border-emerald-500 cursor-pointer"
         >

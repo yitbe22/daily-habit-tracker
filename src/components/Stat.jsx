@@ -1,7 +1,7 @@
 import StatCard from "./StatCard";
 import { Flame, Trophy, CircleCheck, ChartLine } from "lucide-react";
 
-const Stat = ({ onAddHabit }) => {
+const Stat = ({ onAddHabit, streak, completedToday }) => {
   return (
     <div className="mx-auto w-full max-w-230 bg-white dark:bg-slate-950">
       <div className="flex flex-col space-y-3 sm:flex-row sm:justify-between sm:items-center  px-6 sm:px-7 md:px-8 py-5">
@@ -24,7 +24,7 @@ const Stat = ({ onAddHabit }) => {
         <StatCard
           icon={Flame}
           title="Current Streak"
-          value="12"
+          value={streak}
           unit="days"
           iconColor="text-orange-600"
           borderColor="text-orange-200"
@@ -42,7 +42,7 @@ const Stat = ({ onAddHabit }) => {
         <StatCard
           icon={CircleCheck}
           title="Completed Today"
-          value="3/5"
+          value={completedToday}
           iconColor="text-green-600"
           borderColor="text-green-200"
         />
