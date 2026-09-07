@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import { PageContext } from "./PageContext";
+import { getHabitStreak } from "../utils/habitCalculations";
 
 export const PageProvider = ({ children }) => {
   const [page, setPage] = useState("home");
@@ -68,6 +69,8 @@ export const PageProvider = ({ children }) => {
      );
   };
 
+   
+
 
   return (
     <PageContext.Provider value={{ 
@@ -85,6 +88,7 @@ export const PageProvider = ({ children }) => {
       setForm,
       isFormOpen,
       setIsFormOpen,
+      getHabitStreak,
      }}>
       {children}
     </PageContext.Provider>

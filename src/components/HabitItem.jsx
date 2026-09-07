@@ -5,7 +5,7 @@ import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 
 const HabitItem = ({habit}) => {
-    const {setPage, setSelectedHabit,toggelHabit} = useContext(PageContext);
+    const {setPage, setSelectedHabit,toggelHabit, getHabitStreak} = useContext(PageContext);
     const today = new Date().toISOString().split("T")[0];
     const completed = habit.completions[today] || false;
 
@@ -40,7 +40,7 @@ const HabitItem = ({habit}) => {
       <div className="flex gap-2 items-center">
         <div className="flex items-center gap-1 text-sm bg-gray-300 dark:text-slate-900 py-1 px-2 rounded-full">
           <Flame size={15} className="text-orange-500" />
-            20
+            {getHabitStreak(habit)}
         </div>
         <button
           onClick={(event) => {

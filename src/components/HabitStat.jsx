@@ -1,4 +1,4 @@
-import { MoveLeft } from "lucide-react"
+import { MoveLeft,Flame } from "lucide-react"
 import { HabitStatCard } from "./HabitStatCard"
 import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
@@ -7,7 +7,7 @@ import habitColors from "../utils/habitColors"
 
 
 export const HabitStat = ({habit, onEdit}) => {
-    const {setPage, setEditing, setForm} = useContext(PageContext);
+    const {setPage, setEditing, setForm, getHabitStreak} = useContext(PageContext);
     
     if (!habit) return null;
 
@@ -30,9 +30,13 @@ export const HabitStat = ({habit, onEdit}) => {
                         {habit.name}
                        </h1>
                     </div>
-                    <div>
-                        <p className="text-xs font- text-orange-500">12 day streak!</p>
+                <div>
+                    <div className="flex items-center gap-1 text-sm  text-orange-500">
+                      <Flame size={15} className="shrink-0" />
+                      <span>{getHabitStreak(habit)}</span>
+                      <h4 className="whitespace-nowrap">day streak!</h4> 
                     </div>
+                </div>
 
                 </div>
             </div>
