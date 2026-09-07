@@ -25,3 +25,8 @@ export const getHabitStreak = (habit) => {
 
      return streak;
 }
+
+export const getTotalCompletions = (habit) => {
+     const total = Object.keys(habit.completions).length;
+     return total;
+}

@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 import habitIcons from "../utils/habitIcons"
 import habitColors from "../utils/habitColors"
-
+import { getTotalCompletions } from "../utils/habitCalculations"
 
 export const HabitStat = ({habit, onEdit}) => {
     const {setPage, setEditing, setForm, getHabitStreak} = useContext(PageContext);
@@ -15,6 +15,8 @@ export const HabitStat = ({habit, onEdit}) => {
 
     const ConvertIcon = habitIcons.find((icon) => habit.icon === icon.name);
     const Icon = ConvertIcon?.icon;
+
+    const totalCompletions = getTotalCompletions(habit);
 
   return (
     <div className="mx-auto w-full max-w-230 bg-white dark:bg-slate-950  px-6 sm:px-7 md:px-8">
@@ -56,8 +58,8 @@ export const HabitStat = ({habit, onEdit}) => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-5">
             <HabitStatCard
-                 title="Total Completions"
-                value="145"
+                title="Total Completions"
+                value={totalCompletions}
                 unit="times" 
             />
             <HabitStatCard
