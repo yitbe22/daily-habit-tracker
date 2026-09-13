@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 import habitIcons from "../utils/habitIcons"
 import habitColors from "../utils/habitColors"
-import { getTotalCompletions } from "../utils/habitCalculations"
+import { getTotalCompletions,getSuccessRate } from "../utils/habitCalculations"
 
 export const HabitStat = ({habit, onEdit}) => {
     const {setPage, setEditing, setForm, getHabitStreak} = useContext(PageContext);
@@ -17,6 +17,7 @@ export const HabitStat = ({habit, onEdit}) => {
     const Icon = ConvertIcon?.icon;
 
     const totalCompletions = getTotalCompletions(habit);
+    const successRate = getSuccessRate(habit);
 
   return (
     <div className="mx-auto w-full max-w-230 bg-white dark:bg-slate-950  px-6 sm:px-7 md:px-8">
@@ -69,7 +70,8 @@ export const HabitStat = ({habit, onEdit}) => {
             />
             <HabitStatCard
                 title="Success Rate"
-                value="92%"
+                value={successRate}
+                unit="%"
             />
 
         </div>

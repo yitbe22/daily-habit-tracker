@@ -30,3 +30,18 @@ export const getTotalCompletions = (habit) => {
      const total = Object.keys(habit.completions).length;
      return total;
 }
+
+export const getSuccessRate = (habit) => {
+
+     const totalCompletions = Object.keys(habit.completions).length;
+     const today = new Date();
+     const startDate = new Date(habit.startDate);
+     const diff = today - startDate;
+     const days = Math.floor(diff/ (1000*60*60*24))+1;
+    
+      if (days <= 0) {
+        return 0;
+    }
+
+     return Math.floor((totalCompletions/days)*100);
+}

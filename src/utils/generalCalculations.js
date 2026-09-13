@@ -118,6 +118,25 @@ export const getCompletedToday = (habits) => {
 }
 
 
+export const getTotalSuccessRate = (habits) => {
+    if(habits.length === 0){
+      return 0;
+    }
+
+    const today = new Date();
+
+    const totalCompleted = habits.reduce((total, habit) => total + Object.keys(habit.completions).length, 0);
+
+    const totalPossible = habits.reduce((total, habit) => {
+         const startDate = new Date(habit.startDate);
+         const diff = today - startDate;
+         return  total+ Math.floor(diff/ (1000*60*60*24))+1;
+    },0)
+
+    return Math.floor((totalCompleted/totalPossible)*100);
+};
+
+
 
 
 
