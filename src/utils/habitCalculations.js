@@ -26,6 +26,35 @@ export const getHabitStreak = (habit) => {
      return streak;
 }
 
+export const getBestStreak = (habit) => {
+     let currentStreak = 0;
+     let bestStreak = 0;
+     const dates = Object.keys(habit.completions).sort();
+
+      for (let i = 0; i < dates.length; i++) {
+          if(i===0){
+               currentStreak = 1;
+          } else{
+             const previous = new Date(dates[i-1]);
+              const current = new Date(dates[i]);
+              const diff = current - previous;
+
+              if(diff === 1000*60*60*24){
+                    currentStreak++;
+                     
+                } else {
+                    currentStreak = 1;
+               }
+          }
+              
+            if(currentStreak > bestStreak){
+               bestStreak = currentStreak;
+               }
+     }
+ 
+     return bestStreak;
+}
+
 export const getTotalCompletions = (habit) => {
      const total = Object.keys(habit.completions).length;
      return total;

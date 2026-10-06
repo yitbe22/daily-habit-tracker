@@ -23,7 +23,7 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
    const completedToday = getCompletedToday(habits);
    const totalSuccessRate = getTotalSuccessRate(habits);
 
-   console.log(habits);
+  console.log(habits);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-white  overflow-hidden">
