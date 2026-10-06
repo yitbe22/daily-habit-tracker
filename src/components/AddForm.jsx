@@ -1,12 +1,13 @@
-import { useContext} from "react";
+import { useContext, useState} from "react";
 import habitIcons from "../utils/habitIcons";
 import habitColors from "../utils/habitColors";
 import { X } from "lucide-react";
 import { PageContext } from "../context/PageContext";
 
 const AddForm = ({ onClose, isOpen, onAddHabit, onEdit}) => {
+  const [popup , setPopup] = useState(false);
   
-  const {form,setForm,editing} = useContext(PageContext);
+  const {form,setForm,editing, removeHabit} = useContext(PageContext);
   
 
   const handleSubmit = (e) => {
@@ -125,14 +126,33 @@ const AddForm = ({ onClose, isOpen, onAddHabit, onEdit}) => {
               })}
             </div>
           </div>
-          <div className="py-3">
+          <div className={`py-3 ${editing? "flex gap-2": ''} `}>
             <button className="w-full bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300">
                {editing ? "Save Changes" : "Create Habit"}
             </button>
+           {editing && <button type="button" onClick={() => setPopup(true)} className="w-full bg-red-500 hover:bg-red-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300">
+               Remove Habit
+            </button>}
+
           </div>
         </form>
       </div>
+      {popup &&
+      <div className="fixed inset-0 z-200 bg-black/60">
+           <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm w-50 bg-slate-900 rounded-2xl py-2 px-3">
+              <p className="text-sm font-medium pb-3">Are you sure you want to remove habit</p>
+              <div className="flex gap-2 justify-center">
+                  <button onClick={() => setPopup(false)} type="button" className="px-2 py-1 rounded-lg cursor-pointer transition-colors duration-200 bg-amber-300">cancel</button>
+              <button type="button" onClick={() => removeHabit(editing.id)} className="px-2 py-1 rounded-lg cursor-pointer transition-colors duration-200 bg-red-400">Confirm</button>
+              </div>
+             
+           </div>
+      </div>}
     </div>
+    
+
+
+
   );
 };
 

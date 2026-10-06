@@ -70,7 +70,7 @@ const QuickAdd = ({onAddHabit}) => {
           </div>
         </div>
         <div className="py-3">
-          <button type="submit"  className="w-full bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300">
+          <button type="submit" className="w-full bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300">
             Create Habit
           </button>
         </div>

@@ -5,7 +5,7 @@ import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 
 export const HabitDetail = ({darkMode, toggleDarkMode}) => {
-   const {selectedHabit, isFormOpen, setIsFormOpen, updateHabit, editing} = useContext(PageContext);
+   const {selectedHabit, isFormOpen, setIsFormOpen, updateHabit, editing, resetForm} = useContext(PageContext);
 
   return (
       <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-white  overflow-hidden">
@@ -16,7 +16,10 @@ export const HabitDetail = ({darkMode, toggleDarkMode}) => {
           </main>
           <AddForm 
             isOpen={isFormOpen} 
-            onClose={() => setIsFormOpen(false)} 
+            onClose={() => {
+               resetForm();
+               setIsFormOpen(false)
+            }} 
             onEdit={updateHabit}
             editing={editing}/>
       </div>

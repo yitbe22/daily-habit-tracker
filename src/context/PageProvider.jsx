@@ -47,6 +47,23 @@ export const PageProvider = ({ children }) => {
        setSelectedHabit(updatedHabit);
        setEditing(null);
   };
+
+   const removeHabit = (id) => {
+       setHabits((currentHabits) => 
+          currentHabits.filter(habit => 
+            habit.id !== id)
+       ); 
+
+      setSelectedHabit(null);
+      setEditing(null);
+      setIsFormOpen(false);
+      setPage("home");
+   }
+
+    const resetForm = () => {
+      setForm({name: "", icon: "", color: ""});
+      setEditing(null);
+    }
   
  
   const toggelHabit = (id) => {
@@ -79,6 +96,8 @@ export const PageProvider = ({ children }) => {
       habits,
       editing,
       setEditing,
+      resetForm,
+      removeHabit,
       addHabit,
       updateHabit,
       toggelHabit,

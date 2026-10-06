@@ -5,9 +5,10 @@ import { PageContext } from "../context/PageContext"
 import habitIcons from "../utils/habitIcons"
 import habitColors from "../utils/habitColors"
 import { getTotalCompletions,getSuccessRate } from "../utils/habitCalculations"
+import ActivityHeatmap from "./ActivityHeatmap"
 
 export const HabitStat = ({habit, onEdit}) => {
-    const {setPage, setEditing, setForm, getHabitStreak} = useContext(PageContext);
+    const {setPage, setEditing, setForm, getHabitStreak, resetForm} = useContext(PageContext);
     
     if (!habit) return null;
 
@@ -21,7 +22,11 @@ export const HabitStat = ({habit, onEdit}) => {
 
   return (
     <div className="mx-auto w-full max-w-230 bg-white dark:bg-slate-950  px-6 sm:px-7 md:px-8">
-        <button title="Back" onClick={() => setPage('home')} className="py-4 cursor-pointer"><MoveLeft size={24} /></button>
+        <button title="Back" onClick={() => {
+            resetForm();
+            setPage('home');
+
+        }} className="py-4 cursor-pointer"><MoveLeft size={24} /></button>
         <div className="flex justify-between items-center">
            <div className="flex items-center space-x-2">
             <div 
@@ -75,6 +80,7 @@ export const HabitStat = ({habit, onEdit}) => {
             />
 
         </div>
+        <ActivityHeatmap />
     </div>
   )
 }

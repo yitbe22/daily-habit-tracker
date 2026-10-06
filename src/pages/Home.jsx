@@ -16,6 +16,7 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
     addHabit,
     isFormOpen, 
     setIsFormOpen,
+    resetForm,
   } = useContext(PageContext);
  
    const currentStreak = getCurrentStreak(habits);
@@ -29,7 +30,9 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
       <NavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
 
       <main className="pt-14 sm:pt-16 md:pt-17 lg:pt-18">
-        <Stat onAddHabit={() => setIsFormOpen(true)} 
+        <Stat onAddHabit={() => {
+                 resetForm();
+                 setIsFormOpen(true)}} 
              streak={currentStreak}
              completedToday={completedToday}
              successRate={totalSuccessRate}/>
@@ -40,7 +43,9 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
       </main>
       <AddForm 
             isOpen={isFormOpen} 
-            onClose={() => setIsFormOpen(false)} 
+            onClose={() => {
+              resetForm();
+              setIsFormOpen(false)}} 
             onAddHabit={addHabit}/>
 
       <Footer />
