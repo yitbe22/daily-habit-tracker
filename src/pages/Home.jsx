@@ -6,7 +6,7 @@ import QuickAdd from "../components/QuickAdd";
 import Stat from "../components/Stat";
 import Footer from "../components/Footer";
 import { PageContext } from "../context/PageContext";
-import { getCurrentStreak, getCompletedToday, getTotalSuccessRate} from "../utils/generalCalculations";
+import { getCurrentStreak, getCompletedToday, getTotalSuccessRate, getBestOverallStreak} from "../utils/generalCalculations";
 
 
 const Home = ({darkMode,toggleDarkMode,setPage}) => {
@@ -22,6 +22,7 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
    const currentStreak = getCurrentStreak(habits);
    const completedToday = getCompletedToday(habits);
    const totalSuccessRate = getTotalSuccessRate(habits);
+   const bestStreak = getBestOverallStreak(habits);
 
   console.log(habits);
 
@@ -35,7 +36,8 @@ const Home = ({darkMode,toggleDarkMode,setPage}) => {
                  setIsFormOpen(true)}} 
              streak={currentStreak}
              completedToday={completedToday}
-             successRate={totalSuccessRate}/>
+             successRate={totalSuccessRate}
+             bestStreak={bestStreak}/>
         <div className="mx-auto w-full max-w-230 px-4 sm:px-6 md:px-8 py-5 flex flex-col md:flex-row md:justify-between md:items-start gap-5">
           <HabitListItem habits={habits} setPage={setPage} />
           <QuickAdd onAddHabit={addHabit}/>

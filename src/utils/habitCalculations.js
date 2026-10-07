@@ -45,8 +45,7 @@ export const getBestStreak = (habit) => {
                 } else {
                     currentStreak = 1;
                }
-          }
-              
+          }  
             if(currentStreak > bestStreak){
                bestStreak = currentStreak;
                }

@@ -80,6 +80,8 @@
   },
 ]; */
 
+import { getBestStreak } from "./habitCalculations";
+
 
 export const getCurrentStreak = (habits) => {
 
@@ -103,6 +105,27 @@ export const getCurrentStreak = (habits) => {
     }
 
     return streak;
+}
+
+ export const getBestOverallStreak = (habits) => {
+    const completions = {};
+
+    for(const habit of habits){
+        const dates = Object.keys(habit.completions);
+        
+        for(const date of dates){
+            completions[date] = true;
+        }
+    }
+
+    const overAllHabit = {
+        completions
+    }
+    
+    const bestStreak = getBestStreak(overAllHabit);
+    
+    return bestStreak;
+    
 }
 
 export const getCompletedToday = (habits) => {
