@@ -4,10 +4,11 @@ import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 import habitIcons from "../utils/habitIcons"
 import habitColors from "../utils/habitColors"
+import ActivityHeatmap from "../components/ActivityHeatmap"
 import { getTotalCompletions,getSuccessRate,getBestStreak } from "../utils/habitCalculations"
-import ActivityHeatmap from "./ActivityHeatmap"
 
-export const HabitStat = ({habit, onEdit}) => {
+
+export const HabitStat = ({habit, onEdit, darkMode}) => {
     const {setPage, setEditing, setForm, getHabitStreak, resetForm} = useContext(PageContext);
     
     if (!habit) return null;
@@ -16,13 +17,12 @@ export const HabitStat = ({habit, onEdit}) => {
 
     const ConvertIcon = habitIcons.find((icon) => habit.icon === icon.name);
     const Icon = ConvertIcon?.icon;
-
     const totalCompletions = getTotalCompletions(habit);
     const successRate = getSuccessRate(habit);
     const bestStreak = getBestStreak(habit);
 
   return (
-    <div className="mx-auto w-full max-w-230 bg-white dark:bg-slate-950  px-6 sm:px-7 md:px-8">
+    <div className="mx-auto w-full max-w-230 h-auto bg-white dark:bg-slate-950 px-6 sm:px-7 md:px-8 pb-10">
         <button title="Back" onClick={() => {
             resetForm();
             setPage('home');
@@ -81,7 +81,7 @@ export const HabitStat = ({habit, onEdit}) => {
             />
 
         </div>
-        <ActivityHeatmap />
+        <ActivityHeatmap habit={habit} color={color} darkMode={darkMode}/>
     </div>
   )
 }

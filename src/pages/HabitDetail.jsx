@@ -1,6 +1,7 @@
 import { HabitStat } from "../components/HabitStat"
 import NavBar from "../components/NavBar"
 import AddForm from "../components/AddForm"
+import Footer from "../components/Footer"
 import { useContext } from "react"
 import { PageContext } from "../context/PageContext"
 
@@ -12,7 +13,7 @@ export const HabitDetail = ({darkMode, toggleDarkMode}) => {
           <NavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
 
           <main className="pt-14 sm:pt-16 md:pt-17 lg:pt-18">
-             <HabitStat habit={selectedHabit} onEdit={() => setIsFormOpen(true)}/>
+             <HabitStat habit={selectedHabit} onEdit={() => setIsFormOpen(true)} darkMode={darkMode}/>
           </main>
           <AddForm 
             isOpen={isFormOpen} 
@@ -22,6 +23,7 @@ export const HabitDetail = ({darkMode, toggleDarkMode}) => {
             }} 
             onEdit={updateHabit}
             editing={editing}/>
+         <Footer />
       </div>
   )
 }
